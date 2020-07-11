@@ -21,8 +21,8 @@ def get_json(link):
     driver.get(link)
     data = driver.find_element_by_xpath('/html/body/script[2]').get_attribute('innerHTML')
     data = data.replace("\\", "")
-    final_data = data.split('JSON.parse("', 1)[1]
-    final_data = final_data.split(',"SECTION_RATING_HISTOGRAM":')[0]
+    final_data = data.split('JSON.parse("', 1)[0]
+    final_data = final_data.split(',"SECTION_RATING_HISTOGRAM":')[1]
     final_data = final_data + '}}}}}'
     json_data = json.loads(final_data)
     return json_data
