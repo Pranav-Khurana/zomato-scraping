@@ -1,15 +1,18 @@
 import json
 import pandas as pd
 from selenium import webdriver
+#import geckodriver_autoinstaller
 
+
+#geckodriver_autoinstaller.install() 
 # GET THE LINKS OF FIRST 100 RESTAURANTS
 def get_links():
     i = 1
     links = []
-    base_url = "https://www.zomato.com/agra/restaurants?page="
-    while len(links) < 100:
+    base_url = "https://www.zomato.com/ncr/restaurants?page="
+    while len(links) < 2:
         url = base_url + str(i)
-        content = driver.get(url)
+        driver.get(url)
         results = driver.find_elements_by_class_name("result-title")
         places = [result.get_attribute('href') for result in results]
         links.extend(places)
@@ -92,6 +95,6 @@ if __name__ == "__main__":
             pass
 
 
-    zomato_data.to_csv('/home/pranav/Desktop/Internship/zomato.csv', index=False)
+    zomato_data.to_csv('/home/prajeshpuri/Desktop/COLLEGE/hacktoberfest 2020/zomato-scraping/zomato.csv', index=False)
 
     driver.quit()
